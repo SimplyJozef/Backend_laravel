@@ -13,7 +13,7 @@ class SpeakersController extends Controller
     {
         $speakers = Speakers::all();
 
-        // Ensure the image URLs are correct
+
         $speakers->each(function ($speaker) {
             $speaker->image = url('storage/images/' . $speaker->imageLink);
         });
@@ -30,7 +30,7 @@ class SpeakersController extends Controller
         $linkedIn = $request->post('linkedIn');
         $imageLink = $request->post('imageLink');
 
-        // Validate input fields
+
         $request->validate([
             'name' => 'required',
             'skusenosti' => 'required',
@@ -39,8 +39,8 @@ class SpeakersController extends Controller
             'imageLink' => 'required',
         ]);
 
-        // Create a new speaker
-        $newSpeaker = new Speakers(); // Changed from Speaker to Speakers
+
+        $newSpeaker = new Speakers();
         $newSpeaker->name = $name;
         $newSpeaker->skusenosti = $skusenosti;
         $newSpeaker->firma = $firma;
@@ -53,29 +53,29 @@ class SpeakersController extends Controller
 
     public function deleteSpeaker(int $id)
     {
-        $speaker = Speakers::find($id); // Changed from Speaker to Speakers
+        $speaker = Speakers::find($id);
 
         if ($speaker) {
-            // Delete the speaker
+
             $speaker->delete();
 
-            // Return success response
+
             return response()->json(['message' => 'Speaker deleted successfully'], 200);
         }
 
-        // If the speaker with the given ID does not exist, return error response
+
         return response()->json(['error' => 'Speaker not found'], 404);
     }
 
     public function updateSpeaker(Request $request, int $id)
     {
-        $speaker = Speakers::find($id); // Changed from Speaker to Speakers
+        $speaker = Speakers::find($id);
 
         if (!$speaker) {
             return response()->json(['error' => 'Speaker not found'], 404);
         }
 
-        // Validate input fields
+
         $request->validate([
             'name' => 'required',
             'skusenosti' => 'required',

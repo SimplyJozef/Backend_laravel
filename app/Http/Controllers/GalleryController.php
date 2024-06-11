@@ -26,13 +26,13 @@ class GalleryController extends Controller
         $rocnik = $request->post('rocnik');
         $imageLink = $request->post('imageLink');
 
-        // Validate input fields
+
         $request->validate([
             'rocnik' => 'required',
             'imageLink' => 'required',
         ]);
 
-        // Create a new gallery entry
+
         $newGallery = new Gallery();
         $newGallery->rocnik = $rocnik;
         $newGallery->imageLink = $imageLink;
@@ -46,14 +46,14 @@ class GalleryController extends Controller
         $gallery = Gallery::find($id);
 
         if ($gallery) {
-            // Delete the gallery entry
+
             $gallery->delete();
 
-            // Return success response
+
             return response()->json(['message' => 'Gallery entry deleted successfully'], 200);
         }
 
-        // If the gallery entry with the given ID does not exist, return error response
+
         return response()->json(['error' => 'Gallery entry not found'], 404);
     }
 
@@ -65,7 +65,7 @@ class GalleryController extends Controller
             return response()->json(['error' => 'Gallery entry not found'], 404);
         }
 
-        // Validate input fields
+
         $request->validate([
             'rocnik' => 'required',
             'imageLink' => 'required',

@@ -26,7 +26,7 @@ class PovedaliONnasController extends Controller
         $pozicia = $request->post('pozicia');
         $imageLink = $request->post('imageLink');
 
-        // Validate input fields
+
         $request->validate([
             'name' => 'required',
             'quote' => 'required',
@@ -34,7 +34,7 @@ class PovedaliONnasController extends Controller
             'imageLink' => 'required',
         ]);
 
-        // Create a new PovedaliONas
+
         $newPovedaliONas = new PovedaliONas();
         $newPovedaliONas->name = $name;
         $newPovedaliONas->quote = $quote;
@@ -50,14 +50,14 @@ class PovedaliONnasController extends Controller
         $povedaliONas = PovedaliONas::find($id);
 
         if ($povedaliONas) {
-            // Delete the PovedaliONas
+
             $povedaliONas->delete();
 
-            // Redirect back to the adminrozhranie route with success message
+
             return response()->json(['message' => 'PovedaliONas deleted successfully'], 200);
         }
 
-        // If the PovedaliONas with the given ID does not exist, return error response
+
         return response()->json(['error' => 'PovedaliONas not found'], 404);
     }
 
@@ -69,7 +69,7 @@ class PovedaliONnasController extends Controller
             return response()->json(['error' => 'PovedaliONas not found'], 404);
         }
 
-        // Validate input fields
+
         $request->validate([
             'name' => 'required',
             'quote' => 'required',

@@ -30,14 +30,14 @@ class SponsorController extends Controller
         $sponzor = Sponzor::find($id);
 
         if ($sponzor) {
-            // Delete the sponzor
+
             $sponzor->delete();
 
-            // Return success response
+
             return response()->json(['message' => 'Sponzor deleted successfully'], 200);
         }
 
-        // If the sponzor with the given ID does not exist, return error response
+
         return response()->json(['error' => 'Sponzor not found'], 404);
     }
 

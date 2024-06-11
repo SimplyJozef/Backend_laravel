@@ -10,10 +10,10 @@ class StageInfoController extends Controller
 {
     public function getStageInfo($stage_id)
     {
-        // Fetch StageInfo records where stage_id matches the given $stage_id
+
         $stageInfo = StageInfo::where('stage_id', $stage_id)->get();
 
-        // Return the filtered StageInfo records
+
         return response()->json(['stage_info' => $stageInfo], 200);
     }
 
@@ -39,7 +39,7 @@ class StageInfoController extends Controller
         $firma = $request->input('firma');
         $max_capacity = $request->input('max_capacity');
 
-        // You can add validation here if needed
+
 
         $newStageInfo = new StageInfo();
         $newStageInfo->stage_id = $stage_id;
@@ -52,7 +52,7 @@ class StageInfoController extends Controller
         $newStageInfo->max_capacity = $max_capacity;
         $newStageInfo->save();
 
-        // Return the newly created stage info object in the response
+
         return response()->json(['message' => 'Stage Info created successfully', 'stage_info' => $newStageInfo], 200);
     }
 

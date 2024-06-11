@@ -10,8 +10,8 @@ class ImageController extends Controller
 {
     public function index()
     {
-        // Assuming you have an Image model with a 'path' attribute
-        $images = Image::all(['id', 'path']); // Adjust attributes as necessary
+
+        $images = Image::all(['id', 'path']);
         return response()->json($images);
     }
 }

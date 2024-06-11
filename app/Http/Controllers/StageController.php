@@ -38,7 +38,7 @@ class StageController extends Controller
         $newStage->date = $date;
         $newStage->save();
 
-        // Return the newly created stage object in the response
+
         return response()->json(['message' => 'Stage created successfully', 'stage' => $newStage], 200);
     }
 
